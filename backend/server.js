@@ -1,16 +1,20 @@
 require("dotenv").config();
 
 const express = require("express");
+const bodyParser = require('body-parser')
 const mongoose = require("mongoose");
 const dreamRoutes = require("./routes/dreams");
 
 // express app
 const app = express();
 
-app.use((req, res, next) => {
-  console.log(req.path, req.method);
-  next();
-});
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+
+// app.use((req, res, next) => {
+//   console.log(req.path, req.method);
+//   next();
+// });
 
 // routes
 app.use("/api/dreams", dreamRoutes);
