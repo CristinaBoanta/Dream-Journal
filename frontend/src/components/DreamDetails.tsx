@@ -1,5 +1,6 @@
 import { Dream } from "../types";
 import { useDreamsContext } from "../hooks/useDreamsContext";
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
 interface DreamDetailProps {
     dream: Dream;
@@ -26,7 +27,7 @@ const DreamDetails = (props: DreamDetailProps) => {
         <>
             <h3>{title}</h3>
             <p>Dream description: <span>{description}</span></p>
-            <p>{createdAt}</p>
+            <p>{formatDistanceToNow(new Date(createdAt), { addSuffix: true })}</p>
 
             <button onClick={handleDelete}>Delete dream</button>
         </>

@@ -25,7 +25,7 @@ const Home = () => {
 
         }
         fetchDreams();
-    },[])
+    },[dispatch])
 
     return (
         <div className="">
