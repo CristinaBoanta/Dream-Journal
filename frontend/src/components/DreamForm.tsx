@@ -7,6 +7,7 @@ const DreamForm = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [ error, setError ] = useState(null);
+  const [emptyFields, setEmptyFields] = useState<String[]>([]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -26,6 +27,7 @@ const DreamForm = () => {
 
     if (!response.ok) {
         setError(json.Error);
+        setEmptyFields(json.emptyFields);
     }
     if (response.ok) {
         setTitle('');
@@ -48,6 +50,7 @@ const DreamForm = () => {
             type="text"
             onChange={(e) => setTitle(e.target.value)}
             value={title}
+            className={emptyFields.includes('title') ? 'error' : ''}
           />
         </div>
 
@@ -56,6 +59,7 @@ const DreamForm = () => {
           <textarea
             onChange={(e) => setDescription(e.target.value)}
             value={description}
+            className={emptyFields.includes('description') ? 'error' : ''}
           ></textarea>
         </div>
 
