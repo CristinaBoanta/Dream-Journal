@@ -5,6 +5,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser')
 const mongoose = require("mongoose");
 const dreamRoutes = require("./routes/dreams");
+const userRoutes = require("./routes/user");
 
 // express app
 const app = express();
@@ -20,6 +21,7 @@ app.use(bodyParser.json())
 
 // routes
 app.use("/api/dreams", dreamRoutes);
+app.use("/api/user", userRoutes);
 
 // database
 mongoose
