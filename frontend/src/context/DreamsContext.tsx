@@ -1,10 +1,5 @@
 import { createContext, useReducer } from 'react';
-import { DreamContextProviderProps, DreamState } from '../types';
-
-interface Action {
-    type: String,
-    payload: any 
-}
+import { PropsWithChildren, DreamState, Action } from '../types';
 
 export const DreamsContext = createContext({});
 
@@ -35,7 +30,7 @@ export const dreamsReducer = (state: DreamState, action: Action) => {
 
 }
 
-export const DreamContextProvider = ({ children }: DreamContextProviderProps) => {
+export const DreamContextProvider = ({ children }: PropsWithChildren) => {
     const [state, dispatch] = useReducer(dreamsReducer, {
         dreams: null
     });
