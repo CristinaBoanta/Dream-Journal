@@ -7,10 +7,24 @@ export interface Dream {
     createdAt: string;
 }
 
-export interface DreamContextProviderProps {
+export interface PropsWithChildren {
     children: ReactNode;
 }
 
 export interface DreamState {
     dreams: null | Dream[]
+}
+
+export interface User {
+    email: String;
+    password: String;
+}
+
+export interface AuthState {
+    user: User;
+}
+
+export interface Action {
+    type: String;
+    payload: any;
 }
