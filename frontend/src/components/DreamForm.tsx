@@ -3,41 +3,40 @@ import { useDreamsContext } from "../hooks/useDreamsContext";
 
 const DreamForm = () => {
   const { dispatch } = useDreamsContext();
-  console.log(dispatch);
+  // console.log(dispatch);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [ error, setError ] = useState(null);
+  const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState<String[]>([]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const dream = {title, description}
+    const dream = { title, description };
     // console.log(description, title);
 
-    const response = await fetch('http://localhost:4000/api/dreams/', {
-        method: 'POST',
-        body: JSON.stringify(dream),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
+    const response = await fetch("http://localhost:4000/api/dreams/", {
+      method: "POST",
+      body: JSON.stringify(dream),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     const json = await response.json();
 
-
     if (!response.ok) {
-        setError(json.Error);
-        setEmptyFields(json.emptyFields);
+      setError(json.Error);
+      setEmptyFields(json.emptyFields);
     }
     if (response.ok) {
-        setTitle('');
-        setDescription('');
+      setTitle("");
+      setDescription("");
 
-        setError(null);
-        console.log('new dream added', json)
-        dispatch({type: 'CREATE_DREAM', payload: json})
+      setError(null);
+      console.log("new dream added", json);
+      dispatch({ type: "CREATE_DREAM", payload: json });
     }
-  }
+  };
 
   return (
     <>
@@ -50,7 +49,7 @@ const DreamForm = () => {
             type="text"
             onChange={(e) => setTitle(e.target.value)}
             value={title}
-            className={emptyFields.includes('title') ? 'error' : ''}
+            className={emptyFields.includes("title") ? "error" : ""}
           />
         </div>
 
@@ -59,7 +58,7 @@ const DreamForm = () => {
           <textarea
             onChange={(e) => setDescription(e.target.value)}
             value={description}
-            className={emptyFields.includes('description') ? 'error' : ''}
+            className={emptyFields.includes("description") ? "error" : ""}
           ></textarea>
         </div>
 
