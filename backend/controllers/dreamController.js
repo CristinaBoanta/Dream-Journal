@@ -4,7 +4,9 @@ const mongoose = require('mongoose')
 // get dreams
 
 const getDreams = async (req, res) => {
-    const dreams = await Dream.find({}).sort({createdAt: -1})
+    const user_id = req.user._id
+
+    const dreams = await Dream.find({ user_id }).sort({createdAt: -1})
 
     res.status(200).json(dreams)
 }
@@ -46,7 +48,8 @@ const createDream = async (req, res) => {
     }
 
     try {
-        const dream = await Dream.create({title, description})
+        const user_id = req.user._id
+        const dream = await Dream.create({title, description, user_id})
         res.status(200).json(dream)
     } catch (error) {
         res.status(400).json({error: error.message})
