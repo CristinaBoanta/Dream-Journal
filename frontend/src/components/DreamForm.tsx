@@ -1,16 +1,23 @@
 import { useState } from "react";
 import { useDreamsContext } from "../hooks/useDreamsContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const DreamForm = () => {
   const { dispatch } = useDreamsContext();
+  const { user } = useAuthContext();
   // console.log(dispatch);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<String | null>(null);
   const [emptyFields, setEmptyFields] = useState<String[]>([]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!user) {
+      setError('You must be logged in')
+      return
+    }
 
     const dream = { title, description };
     // console.log(description, title);
@@ -20,6 +27,7 @@ const DreamForm = () => {
       body: JSON.stringify(dream),
       headers: {
         "Content-Type": "application/json",
+        'Authorization': `Bearer ${user.token}`
       },
     });
     const json = await response.json();

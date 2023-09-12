@@ -16,6 +16,7 @@ export interface DreamState {
 }
 
 export interface User {
+    token: String;
     email: String;
     password: String;
 }
