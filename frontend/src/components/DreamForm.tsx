@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useDreamsContext } from "../hooks/useDreamsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
-import { Button } from "flowbite-react";
+import { Button, Label, TextInput, Textarea } from "flowbite-react";
+// import { Button } from "flowbite-react";
 
 const DreamForm = () => {
   const { dispatch } = useDreamsContext();
@@ -49,7 +50,7 @@ const DreamForm = () => {
 
   return (
     <>
-      <form className="" onSubmit={handleSubmit}>
+      {/* <form className="" onSubmit={handleSubmit}>
         <h3>Log a dream to the journal</h3>
 
         <div className="form-row">
@@ -74,6 +75,61 @@ const DreamForm = () => {
         <Button>
           <button>Log dream</button>
         </Button>
+        {error && <div className="error">{error}</div>}
+      </form> */}
+
+      <form className="flex w-full flex-col gap-4" onSubmit={handleSubmit}>
+        <div>
+          <div className="mb-2 block">
+            <Label htmlFor="dreamTitle" value="Dream Title" />
+          </div>
+          <TextInput
+            id="dreamTitle"
+            placeholder="Carnivore flower"
+            required
+            type="text"
+            onChange={(e) => setTitle(e.target.value)}
+            value={title}
+            className={emptyFields.includes("title") ? "error" : ""}
+          />
+        </div>
+        {/* <div>
+          <div className="mb-2 block">
+            <Label htmlFor="dreamDescription" value="Dream description" />
+          </div>
+          <TextInput
+            placeholder="Last night I dreamed about a beautiful flesh-eating carnivore flower"
+            id="dreamDescription"
+            required
+            // type="password"
+            onChange={(e) => setDescription(e.target.value)}
+            value={description}
+            className={emptyFields.includes("description") ? "error" : ""}
+          />
+        </div> */}
+
+        <div className="w-full" id="textarea">
+          <div className="mb-2 block">
+            <Label htmlFor="dreamDescription" value="Dream description" />
+          </div>
+          <Textarea
+            id="dreamDescription"
+            placeholder="Last night I dreamed about a flesh-eating carnivore flower and it was beautiful..."
+            required
+            rows={4}
+            onChange={(e) => setDescription(e.target.value)}
+            value={description}
+            className={`p-2 ${emptyFields.includes("description") ? "error" : ""}`}
+          />
+        </div>
+        {/* <div className="flex items-center gap-2">
+        <Checkbox id="remember" />
+        <Label htmlFor="remember">
+          Remember me
+        </Label>
+      </div> */}
+        <Button type="submit">Submit</Button>
+
         {error && <div className="error">{error}</div>}
       </form>
     </>
