@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDreamsContext } from "../hooks/useDreamsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { Button } from "flowbite-react";
 
 const DreamForm = () => {
   const { dispatch } = useDreamsContext();
@@ -15,8 +16,8 @@ const DreamForm = () => {
     e.preventDefault();
 
     if (!user) {
-      setError('You must be logged in')
-      return
+      setError("You must be logged in");
+      return;
     }
 
     const dream = { title, description };
@@ -27,7 +28,7 @@ const DreamForm = () => {
       body: JSON.stringify(dream),
       headers: {
         "Content-Type": "application/json",
-        'Authorization': `Bearer ${user.token}`
+        Authorization: `Bearer ${user.token}`,
       },
     });
     const json = await response.json();
@@ -70,7 +71,9 @@ const DreamForm = () => {
           ></textarea>
         </div>
 
-        <button>Log dream</button>
+        <Button>
+          <button>Log dream</button>
+        </Button>
         {error && <div className="error">{error}</div>}
       </form>
     </>

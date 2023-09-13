@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLogin } from "../hooks/useLogin";
+import { Button } from "flowbite-react";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -35,7 +36,9 @@ const Login = () => {
         />
       </div>
 
-      <button disabled={isLoading}>Log In</button>
+      <Button>
+        <button disabled={isLoading}>Log In</button>
+      </Button>
       {error && <div className="error">{error}</div>}
     </form>
   );
