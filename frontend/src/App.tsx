@@ -13,10 +13,11 @@ const App = () => {
   const { user } = useAuthContext();
 
   return (
-    <div className="App">
+    <div className="App w-full bg-main-color">
+      <div className="relative container mx-auto h-[100vh]">
       <BrowserRouter>
         <Navbar />
-        <div className="pages">
+        <div className="pages py-12">
           <Routes>
             <Route path="/" element={user ? <Home /> : <Navigate to="/login" />} />
             <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
@@ -24,6 +25,7 @@ const App = () => {
           </Routes>
         </div>
       </BrowserRouter>
+      </div>
     </div>
   );
 };

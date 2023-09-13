@@ -2,6 +2,7 @@ import { Dream } from "../types";
 import { useDreamsContext } from "../hooks/useDreamsContext";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { Button } from 'flowbite-react';
 
 interface DreamDetailProps {
     dream: Dream;
@@ -37,7 +38,7 @@ const DreamDetails = (props: DreamDetailProps) => {
             <p>Dream description: <span>{description}</span></p>
             <p>{formatDistanceToNow(new Date(createdAt), { addSuffix: true })}</p>
 
-            <button onClick={handleDelete}>Delete dream</button>
+            <Button onClick={handleDelete}>Delete dream</Button>
         </>
     )
 }

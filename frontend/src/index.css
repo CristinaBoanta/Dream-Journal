@@ -1,3 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    color: #fff
+}
+
+textarea, input {
+    color: #000;
+}
+
 input.error, textarea.error {
     border: 1px solid red;
 }
