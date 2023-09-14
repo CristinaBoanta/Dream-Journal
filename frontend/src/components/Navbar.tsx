@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
-import { Button } from 'flowbite-react';
+import { Button } from "flowbite-react";
 
 const Navbar = () => {
   const { logout } = useLogout();
@@ -21,9 +21,9 @@ const Navbar = () => {
 
       <nav>
         {!user && (
-          <div className="flex">
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Sign Up</Link>
+          <div className="flex gap-4">
+              <Link to="/login"><Button>Login</Button></Link>
+              <Link to="/signup"><Button>Sign Up</Button></Link>
           </div>
         )}
 

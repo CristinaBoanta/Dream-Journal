@@ -1,16 +1,17 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import DreamDetails from "../components/DreamDetails";
 import { Dream } from "../types";
 import DreamForm from "../components/DreamForm";
 import { useDreamsContext } from "../hooks/useDreamsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { Pagination } from 'flowbite-react';
 
 const Home = () => {
-  // const [dreams, setDreams] = useState<Dream[] | null>(null)
-  // console.log(dreams);
-
   const { dreams, dispatch } = useDreamsContext();
   const { user } = useAuthContext();
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = Math.ceil((dreams?.length || 0) / 3);
 
   useEffect(() => {
     const fetchDreams = () => {
@@ -21,9 +22,7 @@ const Home = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          // setDreams(data);
           dispatch({ type: "SET_DREAMS", payload: data });
-          console.log(data);
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
@@ -35,19 +34,35 @@ const Home = () => {
     }
   }, [dispatch, user]);
 
+  // Function to handle page change
+  const onPageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  // Calculate the slice range for current page
+  const startIndex = (currentPage - 1) * 3; // Assuming 10 dreams per page
+  const endIndex = startIndex + 3; // Assuming 10 dreams per page
+
   return (
     <div className="flex gap-20">
       <div className="form flex-1 px-10">
         <DreamForm />
       </div>
 
-      <div className="dreams flex-1 px-10 gap-8 flex flex-col">
+    <div className="dreams flex-1 px-10 gap-8 flex flex-col h-[85vh] overflow-hidden">
+    <div className="flex flex-col gap-8">
         {dreams &&
-          dreams.map((dream: Dream) => {
-            // console.log(dream);
-            return <DreamDetails key={dream._id} dream={dream} />;
-          })}
+          dreams.slice(startIndex, endIndex).map((dream: Dream) => (
+            <DreamDetails key={dream._id} dream={dream} />
+          ))}
       </div>
+
+      <Pagination
+        currentPage={currentPage}
+        onPageChange={onPageChange}
+        totalPages={totalPages}
+      />
+    </div>
     </div>
   );
 };

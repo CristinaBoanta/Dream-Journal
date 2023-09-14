@@ -17,7 +17,7 @@ const App = () => {
       <div className="relative container mx-auto h-[100vh]">
       <BrowserRouter>
         <Navbar />
-        <div className="pages py-12">
+        <div className="pages py-6">
           <Routes>
             <Route path="/" element={user ? <Home /> : <Navigate to="/login" />} />
             <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
