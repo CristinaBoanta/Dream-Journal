@@ -44,7 +44,7 @@ const Signup = () => {
     // </form>
 
     <form
-      className="signup flex max-w-md flex-col gap-4"
+      className="signup flex max-w-md flex-col gap-4 m-auto"
       onSubmit={handleSubmit}
     >
       <h1>Sign up to DreamLog</h1>

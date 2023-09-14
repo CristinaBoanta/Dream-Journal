@@ -43,11 +43,11 @@ const Login = () => {
     //   {error && <div className="error">{error}</div>}
     // </form>
 
-    <form className="flex max-w-md flex-col gap-4" onSubmit={handleSubmit}>
+    <form className="flex max-w-md flex-col gap-4 m-auto" onSubmit={handleSubmit}>
       <h1>Log In</h1>
 
       <div className="form-content">
-        <div>
+        <div className="py-4">
           <div className="mb-2 block">
             <Label htmlFor="email" value="Email" />
           </div>
@@ -60,7 +60,7 @@ const Login = () => {
             value={email}
           />
         </div>
-        <div>
+        <div className="">
           <div className="mb-2 block">
             <Label htmlFor="password" value="Password" />
           </div>
@@ -76,9 +76,11 @@ const Login = () => {
           <Checkbox id="remember" />
           <Label htmlFor="remember">Remember me</Label>
         </div> */}
+        <div className="py-6">
         <Button type="submit">
           <button disabled={isLoading}>Log In</button>
         </Button>
+        </div>
 
         {error && <div className="error">{error}</div>}
       </div>
