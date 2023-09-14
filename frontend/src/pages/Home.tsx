@@ -49,20 +49,25 @@ const Home = () => {
         <DreamForm />
       </div>
 
-    <div className="dreams flex-1 px-10 gap-8 flex flex-col h-[85vh] overflow-hidden">
-    <div className="flex flex-col gap-8">
-        {dreams &&
-          dreams.slice(startIndex, endIndex).map((dream: Dream) => (
-            <DreamDetails key={dream._id} dream={dream} />
-          ))}
-      </div>
+      <div className="dreams flex-1 px-10 gap-8 flex flex-col h-[85vh] overflow-hidden">
+        <div className="flex flex-col gap-8">
+          {dreams && dreams.length > 0 ? (
+            dreams.slice(startIndex, endIndex).map((dream: Dream) => (
+              <DreamDetails key={dream._id} dream={dream} />
+            ))
+          ) : (
+            <p>No dreams logged</p>
+          )}
+        </div>
 
-      <Pagination
-        currentPage={currentPage}
-        onPageChange={onPageChange}
-        totalPages={totalPages}
-      />
-    </div>
+        {dreams && dreams.length > 0 && (
+          <Pagination
+            currentPage={currentPage}
+            onPageChange={onPageChange}
+            totalPages={totalPages}
+          />
+        )}
+      </div>
     </div>
   );
 };

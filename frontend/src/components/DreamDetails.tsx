@@ -71,13 +71,13 @@ const DreamDetails = (props: DreamDetailProps) => {
       </div>
 
       <div>
-        <Button onClick={() => setShowModal(true)}>Open Modal</Button>
+        <Button onClick={() => setShowModal(true)}>Read dream details</Button>
       </div>
 
       <ReusableModal showModal={showModal} onClose={() => setShowModal(false)}>
-        <Modal.Header>Terms of Service</Modal.Header>
+        <Modal.Header>{title}</Modal.Header>
         <Modal.Body>
-          <p>Content from the Dream card component</p>
+          <p>{description}</p>
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={() => setShowModal(false)}>Close</Button>
