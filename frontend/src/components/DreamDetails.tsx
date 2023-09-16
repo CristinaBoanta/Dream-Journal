@@ -7,6 +7,7 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import ReusableModal from '../components/Modal';
 import { useState } from "react";
 import { Modal } from 'flowbite-react';
+// import { Spinner } from "flowbite-react";
 
 interface DreamDetailProps {
   dream: Dream;
@@ -69,6 +70,8 @@ const DreamDetails = (props: DreamDetailProps) => {
       >
         <FaRegTrashAlt />
       </div>
+
+      {/* <Spinner /> */}
 
       <div>
         <Button onClick={() => setShowModal(true)}>Read dream details</Button>

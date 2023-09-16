@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDreamsContext } from "../hooks/useDreamsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
-import { Button, Label, TextInput, Textarea } from "flowbite-react";
+import { Button, Label, TextInput, Textarea, Spinner } from "flowbite-react";
 // import { Button } from "flowbite-react";
 
 const DreamForm = () => {
@@ -13,6 +13,8 @@ const DreamForm = () => {
   const [error, setError] = useState<String | null>(null);
   const [emptyFields, setEmptyFields] = useState<String[]>([]);
 
+  const [loading, setLoading] = useState(false);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -22,29 +24,34 @@ const DreamForm = () => {
     }
 
     const dream = { title, description };
+
+    setLoading(true); // Start loading
     // console.log(description, title);
 
-    const response = await fetch("http://localhost:4000/api/dreams/", {
-      method: "POST",
-      body: JSON.stringify(dream),
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${user.token}`,
-      },
-    });
-    const json = await response.json();
+    try {
+      const response = await fetch("http://localhost:4000/api/dreams/", {
+        method: "POST",
+        body: JSON.stringify(dream),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      const json = await response.json();
 
-    if (!response.ok) {
-      setError(json.Error);
-      setEmptyFields(json.emptyFields);
-    }
-    if (response.ok) {
-      setTitle("");
-      setDescription("");
-
-      setError(null);
-      console.log("new dream added", json);
-      dispatch({ type: "CREATE_DREAM", payload: json });
+      if (!response.ok) {
+        setError(json.Error);
+        setEmptyFields(json.emptyFields);
+      } else {
+        setTitle("");
+        setDescription("");
+        setError(null);
+        dispatch({ type: "CREATE_DREAM", payload: json });
+      }
+    } catch (error) {
+      setError("An error occurred while fetching data");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -119,7 +126,9 @@ const DreamForm = () => {
             rows={4}
             onChange={(e) => setDescription(e.target.value)}
             value={description}
-            className={`p-2 ${emptyFields.includes("description") ? "error" : ""}`}
+            className={`p-2 ${
+              emptyFields.includes("description") ? "error" : ""
+            }`}
           />
         </div>
         {/* <div className="flex items-center gap-2">
@@ -128,7 +137,16 @@ const DreamForm = () => {
           Remember me
         </Label>
       </div> */}
-        <Button type="submit">Submit</Button>
+        {/* <Button type="submit">Submit</Button> */}
+
+        {loading ? (
+          <Button color="gray">
+            <Spinner aria-label="Alternate spinner button example" />
+            <span className="pl-3">Loading...</span>
+          </Button>
+        ) : (
+          <Button type="submit">Submit</Button>
+        )}
 
         {error && <div className="error">{error}</div>}
       </form>
