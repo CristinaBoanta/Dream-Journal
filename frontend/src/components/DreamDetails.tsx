@@ -4,9 +4,9 @@ import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { Card, Button } from "flowbite-react";
 import { FaRegTrashAlt } from "react-icons/fa";
-import ReusableModal from '../components/Modal';
+import ReusableModal from "../components/Modal";
 import { useState } from "react";
-import { Modal } from 'flowbite-react';
+import { Modal } from "flowbite-react";
 // import { Spinner } from "flowbite-react";
 
 interface DreamDetailProps {
@@ -14,7 +14,7 @@ interface DreamDetailProps {
 }
 
 const DreamDetails = (props: DreamDetailProps) => {
-  const { title, description, createdAt, _id } = props.dream;
+  const { title, description, createdAt, _id, sentimentScore } = props.dream;
   const { dispatch } = useDreamsContext();
   const { user } = useAuthContext();
 
@@ -62,6 +62,15 @@ const DreamDetails = (props: DreamDetailProps) => {
       <p className="font-normal text-gray-700 dark:text-gray-400">
         {formatDistanceToNow(new Date(createdAt), { addSuffix: true })}
       </p>
+
+      <div className="flex gap-2">
+        <span>General dream sentiment:</span>
+        <div>
+          {sentimentScore > 0 && <div>Positive</div>}
+          {sentimentScore < 0 && <div>Negative</div>}
+          {sentimentScore === 0 && <div>Neutral</div>}{" "}
+        </div>
+      </div>
 
       {/* <Button onClick={handleDelete}>Delete dream</Button> */}
       <div

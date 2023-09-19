@@ -14,6 +14,9 @@ const dreamSchema = new Schema({
     user_id: {
         type: String,
         required: true
+    },
+    sentimentScore: {
+        type: Number,
     }
 }, {timestamps: true})
 

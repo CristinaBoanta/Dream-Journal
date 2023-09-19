@@ -5,6 +5,7 @@ export interface Dream {
     title: string;
     description: string;
     createdAt: string;
+    sentimentScore: number;
 }
 
 export interface PropsWithChildren {

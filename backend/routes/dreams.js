@@ -4,7 +4,7 @@ const {
     getSingleDream,
     getDreams,
     deleteDream,
-    updateDream
+    updateDream,
 } = require('../controllers/dreamController')
 const requireAuth = require('../middleware/requireAuth')
 

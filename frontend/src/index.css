@@ -13,3 +13,8 @@ textarea, input {
 input.error, textarea.error {
     border: 1px solid red;
 }
+
+.pages {
+    height: calc(100% - 90px);
+    overflow-y: auto;
+}
