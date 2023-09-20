@@ -14,7 +14,7 @@ interface DreamDetailProps {
 }
 
 const DreamDetails = (props: DreamDetailProps) => {
-  const { title, description, createdAt, _id } = props.dream;
+  const { title, description, createdAt, _id, sentiment } = props.dream;
   const { dispatch } = useDreamsContext();
   const { user } = useAuthContext();
 
@@ -57,6 +57,10 @@ const DreamDetails = (props: DreamDetailProps) => {
       </h5>
       <div className="font-normal text-gray-700 dark:text-gray-400 w-[30vw] whitespace-nowrap overflow-hidden overflow-ellipsis">
         {description}
+      </div>
+
+      <div>
+        {sentiment}
       </div>
 
       <p className="font-normal text-gray-700 dark:text-gray-400">

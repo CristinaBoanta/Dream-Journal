@@ -1,6 +1,14 @@
 const Dream = require('../models/dreamModel')
 const mongoose = require('mongoose')
 
+const OpenAI = require("openai");
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY
+});
+
+const sentimentAnalysisPrompt = "Please classify the sentiment expressed in the following sentence as positive, neutral or negative. More information should be provided on the mood and tone: ";
+
 // get dreams
 
 const getDreams = async (req, res) => {
@@ -35,7 +43,9 @@ const getSingleDream = async(req, res) => {
 const createDream = async (req, res) => {
     const {title, description} = req.body
 
-    let emptyFields = []
+    let emptyFields = [];
+
+
 
     if(!title) {
         emptyFields.push('title')
@@ -48,8 +58,29 @@ const createDream = async (req, res) => {
     }
 
     try {
+
+      const response = await openai
+      .completions.create({
+        model: "text-davinci-003",
+        prompt: sentimentAnalysisPrompt + description + ".",
+        temperature: 0,
+        max_tokens: 60,
+        top_p: 1,
+        frequency_penalty: 0,
+        presence_penalty: 0,
+      })
+      console.log(response);
+      // ((response) => {
+      //   // Parse the sentiment from the API response
+        const sentiment = response.choices[0]["text"];
+      //   console.log(response);
+  
+      //   // Send the sentiment back to the client
+      //   // res.send({ sentiment });
+      // });
+
         const user_id = req.user._id
-        const dream = await Dream.create({title, description, user_id})
+        const dream = await Dream.create({title, description, user_id, sentiment})
         res.status(200).json(dream)
     } catch (error) {
         res.status(400).json({error: error.message})
