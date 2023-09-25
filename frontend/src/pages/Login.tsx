@@ -77,7 +77,7 @@ const Login = () => {
           <Label htmlFor="remember">Remember me</Label>
         </div> */}
         <div className="py-6">
-        <Button type="submit">
+        <Button gradientDuoTone="purpleToBlue" type="submit">
           <button disabled={isLoading}>Log In</button>
         </Button>
         </div>

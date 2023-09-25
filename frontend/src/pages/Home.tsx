@@ -11,7 +11,7 @@ const Home = () => {
   const { user } = useAuthContext();
 
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil((dreams?.length || 0) / 3);
+  const totalPages = Math.ceil((dreams?.length || 0) / 1);
 
   useEffect(() => {
     const fetchDreams = () => {
@@ -40,8 +40,8 @@ const Home = () => {
   };
 
   // Calculate the slice range for current page
-  const startIndex = (currentPage - 1) * 3; // Assuming 10 dreams per page
-  const endIndex = startIndex + 3; // Assuming 10 dreams per page
+  const startIndex = (currentPage - 1) * 1; // Assuming 10 dreams per page
+  const endIndex = startIndex + 1; // Assuming 10 dreams per page
 
   return (
     <div className="flex gap-20">

@@ -4,9 +4,9 @@ import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { Card, Button } from "flowbite-react";
 import { FaRegTrashAlt } from "react-icons/fa";
-import ReusableModal from '../components/Modal';
+import ReusableModal from "../components/Modal";
 import { useState } from "react";
-import { Modal } from 'flowbite-react';
+import { Modal } from "flowbite-react";
 // import { Spinner } from "flowbite-react";
 
 interface DreamDetailProps {
@@ -49,7 +49,7 @@ const DreamDetails = (props: DreamDetailProps) => {
     // </div>
 
     <Card
-      className="w-full relative"
+      className="w-full relative card-effect"
       // href="#"
     >
       <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -59,9 +59,7 @@ const DreamDetails = (props: DreamDetailProps) => {
         {description}
       </div>
 
-      <div>
-        {sentiment}
-      </div>
+      <div><p className="mb-4">Dream sentiment:</p>{sentiment}</div>
 
       <p className="font-normal text-gray-700 dark:text-gray-400">
         {formatDistanceToNow(new Date(createdAt), { addSuffix: true })}
@@ -78,16 +76,17 @@ const DreamDetails = (props: DreamDetailProps) => {
       {/* <Spinner /> */}
 
       <div>
-        <Button onClick={() => setShowModal(true)}>Read dream details</Button>
+        <Button gradientDuoTone="purpleToBlue" onClick={() => setShowModal(true)}>Read dream details</Button>
       </div>
 
       <ReusableModal showModal={showModal} onClose={() => setShowModal(false)}>
         <Modal.Header>{title}</Modal.Header>
         <Modal.Body>
-          <p>{description}</p>
+          <p className="mb-8">{description}</p>
+          <div><p>Dream sentiment:</p>{sentiment}</div>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={() => setShowModal(false)}>Close</Button>
+          <Button gradientDuoTone="purpleToBlue" onClick={() => setShowModal(false)}>Close</Button>
         </Modal.Footer>
       </ReusableModal>
     </Card>

@@ -1,2 +1,3 @@
 node_modules
 mongodbuser.txt
+.env

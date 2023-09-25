@@ -13,7 +13,8 @@ const App = () => {
   const { user } = useAuthContext();
 
   return (
-    <div className="App w-full bg-main-color">
+    <div className="App w-full main-wrapper">
+      <div className="background-image"></div>
       <div className="relative container mx-auto h-[100vh]">
       <BrowserRouter>
         <Navbar />

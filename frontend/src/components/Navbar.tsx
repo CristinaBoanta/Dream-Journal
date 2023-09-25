@@ -22,15 +22,15 @@ const Navbar = () => {
       <nav>
         {!user && (
           <div className="flex gap-4">
-              <Link to="/login"><Button>Login</Button></Link>
-              <Link to="/signup"><Button>Sign Up</Button></Link>
+              <Link to="/login"><Button gradientDuoTone="purpleToBlue">Login</Button></Link>
+              <Link to="/signup"><Button gradientDuoTone="purpleToBlue">Sign Up</Button></Link>
           </div>
         )}
 
         {user && (
           <div className="flex items-center">
             <span className="px-6">{user.email}</span>
-            <Button onClick={handleClick}>Log out</Button>
+            <Button gradientDuoTone="purpleToBlue" onClick={handleClick}>Log out</Button>
           </div>
         )}
       </nav>
