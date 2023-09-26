@@ -18,6 +18,8 @@ const DreamDetails = (props: DreamDetailProps) => {
   const { dispatch } = useDreamsContext();
   const { user } = useAuthContext();
 
+  // alert(data);
+
   const [showModal, setShowModal] = useState(false);
 
   // console.log(props);
@@ -55,15 +57,13 @@ const DreamDetails = (props: DreamDetailProps) => {
       <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
         <p>{title}</p>
       </h5>
-      <div className="font-normal text-gray-700 dark:text-gray-400 w-[30vw] whitespace-nowrap overflow-hidden overflow-ellipsis">
-        {description}
+      <div className="font-normal text-gray-700 dark:text-gray-400 description-container">
+        <span className="description-span">{description}</span>
       </div>
 
       <div><p className="mb-4">Dream sentiment:</p>{sentiment}</div>
 
-      <p className="font-normal text-gray-700 dark:text-gray-400">
-        {formatDistanceToNow(new Date(createdAt), { addSuffix: true })}
-      </p>
+
 
       {/* <Button onClick={handleDelete}>Delete dream</Button> */}
       <div
@@ -75,8 +75,11 @@ const DreamDetails = (props: DreamDetailProps) => {
 
       {/* <Spinner /> */}
 
-      <div>
+      <div className="flex justify-between">
         <Button gradientDuoTone="purpleToBlue" onClick={() => setShowModal(true)}>Read dream details</Button>
+        <p className="font-normal text-gray-700 dark:text-gray-400">
+        {formatDistanceToNow(new Date(createdAt), { addSuffix: true })}
+      </p>
       </div>
 
       <ReusableModal showModal={showModal} onClose={() => setShowModal(false)}>

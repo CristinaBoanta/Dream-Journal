@@ -15,7 +15,7 @@ const App = () => {
   return (
     <div className="App w-full main-wrapper">
       <div className="background-image"></div>
-      <div className="relative container mx-auto h-[100vh]">
+      <div className="relative container mx-auto min-h-screen">
       <BrowserRouter>
         <Navbar />
         <div className="pages py-6">

@@ -5,6 +5,8 @@ import DreamForm from "../components/DreamForm";
 import { useDreamsContext } from "../hooks/useDreamsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { Pagination } from 'flowbite-react';
+import CalendarHeatmap from "../components/Heatmap";
+
 
 const Home = () => {
   const { dreams, dispatch } = useDreamsContext();
@@ -47,6 +49,11 @@ const Home = () => {
     <div className="flex gap-20">
       <div className="form flex-1 px-10">
         <DreamForm />
+
+        <div className="flex items-center justify-center">
+        <div className="heatmap"><CalendarHeatmap /></div>
+        <div>Overall score for the past 3 months:</div>
+        </div>
       </div>
 
       <div className="dreams flex-1 px-10 gap-8 flex flex-col h-[85vh] overflow-hidden">
