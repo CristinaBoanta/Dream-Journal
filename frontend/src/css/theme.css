@@ -1,0 +1,15 @@
+/* Dark mode */
+
+#dark {
+    background-color: #000;
+}
+
+/* Light mode */
+
+/* #light * {
+    color: #000
+} */
+
+#light {
+    background-color: #fff;
+}

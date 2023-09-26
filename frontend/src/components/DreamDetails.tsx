@@ -54,10 +54,10 @@ const DreamDetails = (props: DreamDetailProps) => {
       className="w-full relative card-effect"
       // href="#"
     >
-      <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+      <h5 className="text-2xl font-bold tracking-tight text-gray-900">
         <p>{title}</p>
       </h5>
-      <div className="font-normal text-gray-700 dark:text-gray-400 description-container">
+      <div className="font-normal text-gray-700 description-container">
         <span className="description-span">{description}</span>
       </div>
 
@@ -77,7 +77,7 @@ const DreamDetails = (props: DreamDetailProps) => {
 
       <div className="flex justify-between">
         <Button gradientDuoTone="purpleToBlue" onClick={() => setShowModal(true)}>Read dream details</Button>
-        <p className="font-normal text-gray-700 dark:text-gray-400">
+        <p className="font-normal text-gray-700">
         {formatDistanceToNow(new Date(createdAt), { addSuffix: true })}
       </p>
       </div>

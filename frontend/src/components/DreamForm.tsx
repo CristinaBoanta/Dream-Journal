@@ -88,7 +88,7 @@ const DreamForm = () => {
       <form className="flex w-full flex-col gap-4" onSubmit={handleSubmit}>
         <div>
           <div className="mb-2 block">
-            <Label htmlFor="dreamTitle" className="font-normal text-gray-700 dark:text-gray-400 w-[30vw] whitespace-nowrap overflow-hidden overflow-ellipsis" value="Dream Title" />
+            <Label htmlFor="dreamTitle" className="font-normal text-gray-700 w-[30vw] whitespace-nowrap overflow-hidden overflow-ellipsis" value="Dream Title" />
           </div>
           <TextInput
             id="dreamTitle"
@@ -117,7 +117,7 @@ const DreamForm = () => {
 
         <div className="w-full" id="textarea">
           <div className="mb-2 block">
-            <Label htmlFor="dreamDescription" className="font-normal text-gray-700 dark:text-gray-400 w-[30vw] whitespace-nowrap overflow-hidden overflow-ellipsis" value="Dream description" />
+            <Label htmlFor="dreamDescription" className="font-normal text-gray-700 w-[30vw] whitespace-nowrap overflow-hidden overflow-ellipsis" value="Dream description" />
           </div>
           <Textarea
             id="dreamDescription"
