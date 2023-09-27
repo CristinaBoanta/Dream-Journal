@@ -3,9 +3,6 @@ import { createContext, useState } from "react";
 export const ThemeContext = createContext<any>(null);
 
 export const ThemeContextProvider = ({ children } : any) => {
-    // const [state, dispatch] = useReducer(dreamsReducer, {
-    //   dreams: null,
-    // });
 
     const [theme, setTheme] = useState("dark");
 

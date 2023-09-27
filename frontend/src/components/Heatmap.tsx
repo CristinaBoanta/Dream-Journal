@@ -18,7 +18,7 @@ const Heatmap = () => {
 
   return (
     <>
-    <div>View your activity for the past 3 months</div>
+    <div className="text-theme">View your activity for the past 3 months</div>
       <CalendarHeatmap
         startDate={moment().subtract(3, 'month').toDate()}
         endDate={moment().toDate()}

@@ -52,7 +52,7 @@ const Home = () => {
 
         <div className="flex items-center justify-center">
         <div className="heatmap"><CalendarHeatmap /></div>
-        <div>Overall score for the past 3 months:</div>
+        <div className="text-theme p-8">Overall score for the past 3 months:</div>
         </div>
       </div>
 
@@ -72,6 +72,7 @@ const Home = () => {
             currentPage={currentPage}
             onPageChange={onPageChange}
             totalPages={totalPages}
+            className="pagination-effect"
           />
         )}
       </div>

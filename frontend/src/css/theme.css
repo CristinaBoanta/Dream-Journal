@@ -1,15 +1,62 @@
+/* @media (prefers-color-scheme: dark) {
+    .dark\:bg-gray-700 {
+        --tw-bg-opacity: 1;
+        background-color: #3c3c3c;
+    }
+  } */
+
 /* Dark mode */
 
 #dark {
     background-color: #000;
 }
 
+#dark .text-theme {
+    color: #fff;
+}
+
+#dark .user-email {
+    color: #fff;
+}
+
+#dark .text-theme {
+    color: #fff;
+}
+
 /* Light mode */
 
-/* #light * {
-    color: #000
-} */
-
 #light {
-    background-color: #fff;
+    background-color: #dedede;
+}
+
+#light .user-email {
+    color: #000;
+}
+
+#light .card-title {
+    color: #000;
+}
+
+#light .text-theme {
+    color: #000;
+}
+
+#light .form-element-theme input::placeholder, #light .form-element-theme::placeholder {
+    color: #949494;
+}
+
+#light .form-element-theme input, #light .form-element-theme {
+    color: #000;
+}
+
+#light .custom-modal {
+    background-color: #949494;
+}
+
+#light .pagination-effect ul li button {
+    color: #000;
+}
+
+#light .react-calendar-heatmap text {
+    color: #000;
 }

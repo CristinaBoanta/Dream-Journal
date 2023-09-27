@@ -57,87 +57,40 @@ const DreamForm = () => {
 
   return (
     <>
-      {/* <form className="" onSubmit={handleSubmit}>
-        <h3>Log a dream to the journal</h3>
-
-        <div className="form-row">
-          <label>Dream title</label>
-          <input
-            type="text"
-            onChange={(e) => setTitle(e.target.value)}
-            value={title}
-            className={emptyFields.includes("title") ? "error" : ""}
-          />
-        </div>
-
-        <div className="form-row">
-          <label>Describe your dream</label>
-          <textarea
-            onChange={(e) => setDescription(e.target.value)}
-            value={description}
-            className={emptyFields.includes("description") ? "error" : ""}
-          ></textarea>
-        </div>
-
-        <Button>
-          <button>Log dream</button>
-        </Button>
-        {error && <div className="error">{error}</div>}
-      </form> */}
-
       <form className="flex w-full flex-col gap-4" onSubmit={handleSubmit}>
         <div>
           <div className="mb-2 block">
-            <Label htmlFor="dreamTitle" className="font-normal text-gray-700 w-[30vw] whitespace-nowrap overflow-hidden overflow-ellipsis" value="Dream Title" />
+            <Label htmlFor="dreamTitle" className="text-theme  font-normal w-[30vw] whitespace-nowrap overflow-hidden overflow-ellipsis" value="Dream Title" />
           </div>
           <TextInput
             id="dreamTitle"
             placeholder="Carnivore flower"
             required
-            type="text"
+            // type="text"
             onChange={(e) => setTitle(e.target.value)}
             value={title}
-            className={emptyFields.includes("title") ? "error" : ""}
+            className={`input-effect form-element-theme ${
+              emptyFields.includes("title") ? "error" : ""
+            }`}
           />
         </div>
-        {/* <div>
-          <div className="mb-2 block">
-            <Label htmlFor="dreamDescription" value="Dream description" />
-          </div>
-          <TextInput
-            placeholder="Last night I dreamed about a beautiful flesh-eating carnivore flower"
-            id="dreamDescription"
-            required
-            // type="password"
-            onChange={(e) => setDescription(e.target.value)}
-            value={description}
-            className={emptyFields.includes("description") ? "error" : ""}
-          />
-        </div> */}
 
         <div className="w-full" id="textarea">
           <div className="mb-2 block">
-            <Label htmlFor="dreamDescription" className="font-normal text-gray-700 w-[30vw] whitespace-nowrap overflow-hidden overflow-ellipsis" value="Dream description" />
+            <Label htmlFor="dreamDescription" className="text-theme  font-normal w-[30vw] whitespace-nowrap overflow-hidden overflow-ellipsis" value="Dream description" />
           </div>
           <Textarea
             id="dreamDescription"
             placeholder="Last night I dreamed about a flesh-eating carnivore flower and it was beautiful..."
             required
-            rows={4}
+            rows={6}
             onChange={(e) => setDescription(e.target.value)}
             value={description}
-            className={`p-2  ${
+            className={`p-2 glassmorphism-effect form-element-theme ${
               emptyFields.includes("description") ? "error" : ""
             }`}
           />
         </div>
-        {/* <div className="flex items-center gap-2">
-        <Checkbox id="remember" />
-        <Label htmlFor="remember">
-          Remember me
-        </Label>
-      </div> */}
-        {/* <Button type="submit">Submit</Button> */}
 
         {loading ? (
           <Button color="gray">

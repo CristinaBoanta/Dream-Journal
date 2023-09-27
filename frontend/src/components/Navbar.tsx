@@ -29,7 +29,7 @@ const Navbar = () => {
 
         {user && (
           <div className="flex items-center">
-            <span className="px-6">{user.email}</span>
+            <span className="px-6 user-email">{user.email}</span>
             <Button gradientDuoTone="purpleToBlue" onClick={handleClick}>Log out</Button>
           </div>
         )}
