@@ -4,12 +4,15 @@ interface ReusableModalProps {
   showModal: boolean;
   onClose: () => void;
   children: React.ReactNode;
+  className?: string;
 }
 
-export default function ReusableModal({ showModal, onClose, children }: ReusableModalProps) {
+export default function ReusableModal({ showModal, onClose, children, className }: ReusableModalProps) {
   return (
     <Modal show={showModal} onClose={onClose}>
-      {children}
+      <div className={className}>
+        {children}
+      </div>
     </Modal>
   );
 }

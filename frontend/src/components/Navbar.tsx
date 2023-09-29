@@ -2,10 +2,17 @@ import { Link } from "react-router-dom";
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { Button } from "flowbite-react";
+import { useContext } from "react";
+import { ThemeContext } from "../context/ThemeContext";
+
+import ReactSwitch from "react-switch";
+
 
 const Navbar = () => {
   const { logout } = useLogout();
   const { user } = useAuthContext();
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
 
   const handleClick = () => {
     logout();
@@ -29,7 +36,8 @@ const Navbar = () => {
 
         {user && (
           <div className="flex items-center">
-            <span className="px-6 user-email">{user.email}</span>
+            <div className="flex items-center"><span className="text-theme px-6">Dark mode</span><ReactSwitch onChange={toggleTheme} checked={theme === "dark"} /></div>
+            <span className="px-6 text-theme">{user.email}</span>
             <Button gradientDuoTone="purpleToBlue" onClick={handleClick}>Log out</Button>
           </div>
         )}

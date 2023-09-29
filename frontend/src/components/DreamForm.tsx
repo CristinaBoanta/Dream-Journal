@@ -6,7 +6,9 @@ import { Button, Label, TextInput, Textarea, Spinner } from "flowbite-react";
 
 const DreamForm = () => {
   const { dispatch } = useDreamsContext();
+  console.log(useDreamsContext());
   const { user } = useAuthContext();
+
   // console.log(dispatch);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -60,7 +62,11 @@ const DreamForm = () => {
       <form className="flex w-full flex-col gap-4" onSubmit={handleSubmit}>
         <div>
           <div className="mb-2 block">
-            <Label htmlFor="dreamTitle" className="text-theme  font-normal w-[30vw] whitespace-nowrap overflow-hidden overflow-ellipsis" value="Dream Title" />
+            <Label
+              htmlFor="dreamTitle"
+              className="text-theme font-normal w-[30vw] whitespace-nowrap overflow-hidden overflow-ellipsis"
+              value="Dream Title"
+            />
           </div>
           <TextInput
             id="dreamTitle"
@@ -69,7 +75,7 @@ const DreamForm = () => {
             // type="text"
             onChange={(e) => setTitle(e.target.value)}
             value={title}
-            className={`input-effect form-element-theme ${
+            className={`input-effect form-element-theme shadow-md ${
               emptyFields.includes("title") ? "error" : ""
             }`}
           />
@@ -77,7 +83,11 @@ const DreamForm = () => {
 
         <div className="w-full" id="textarea">
           <div className="mb-2 block">
-            <Label htmlFor="dreamDescription" className="text-theme  font-normal w-[30vw] whitespace-nowrap overflow-hidden overflow-ellipsis" value="Dream description" />
+            <Label
+              htmlFor="dreamDescription"
+              className="text-theme font-normal w-[30vw] whitespace-nowrap overflow-hidden overflow-ellipsis"
+              value="Dream description"
+            />
           </div>
           <Textarea
             id="dreamDescription"
@@ -86,19 +96,25 @@ const DreamForm = () => {
             rows={6}
             onChange={(e) => setDescription(e.target.value)}
             value={description}
-            className={`p-2 glassmorphism-effect form-element-theme ${
+            className={`p-2 glassmorphism-effect form-element-theme shadow-md ${
               emptyFields.includes("description") ? "error" : ""
             }`}
           />
         </div>
 
         {loading ? (
-          <Button color="gray">
-            <Spinner aria-label="Alternate spinner button example" />
-            <span className="pl-3">Loading...</span>
-          </Button>
+          <div className="py-8">
+            <Button color="gray">
+              <Spinner aria-label="Alternate spinner button example" />
+              <span className="pl-3">Loading...</span>
+            </Button>
+          </div>
         ) : (
-          <Button gradientDuoTone="purpleToBlue" type="submit">Submit</Button>
+          <div className="py-8">
+            <Button gradientDuoTone="purpleToBlue" type="submit">
+              Submit
+            </Button>
+          </div>
         )}
 
         {error && <div className="error">{error}</div>}

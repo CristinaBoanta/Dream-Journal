@@ -10,13 +10,10 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext";
 import { ThemeContext } from "./context/ThemeContext";
 import { useContext } from "react";
-import ReactSwitch from "react-switch";
 
 const App = () => {
   const { user } = useAuthContext();
-  const { theme, toggleTheme } = useContext(ThemeContext);
-
-  console.log(theme);
+  const { theme } = useContext(ThemeContext);
 
   return (
     <div className="App w-full main-wrapper" id={theme}>
@@ -24,8 +21,7 @@ const App = () => {
       <div className="relative container mx-auto min-h-screen">
       <BrowserRouter>
         <Navbar />
-        <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
-        <div className="pages py-6">
+        <div className="pages py-6 px-4 lg:px-0">
           <Routes>
             <Route path="/" element={user ? <Home /> : <Navigate to="/login" />} />
             <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />

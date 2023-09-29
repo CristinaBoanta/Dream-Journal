@@ -23,6 +23,9 @@ const Heatmap = () => {
         startDate={moment().subtract(3, 'month').toDate()}
         endDate={moment().toDate()}
         values={formattedDreamDates}
+        showWeekdayLabels={true}
+        // showOutOfRangeDays={true}
+        // gutterSize={2}
       />
     </>
   );

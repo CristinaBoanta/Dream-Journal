@@ -46,8 +46,8 @@ const Home = () => {
   const endIndex = startIndex + 1; // Assuming 10 dreams per page
 
   return (
-    <div className="flex gap-20">
-      <div className="form flex-1 px-10">
+    <div className="flex lg:flex-row flex-col gap-12">
+      <div className="form flex-1 px-10 glassmorphism-effect rounded-lg p-6 shadow-md">
         <DreamForm />
 
         <div className="flex items-center justify-center">
@@ -56,7 +56,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="dreams flex-1 px-10 gap-8 flex flex-col h-[85vh] overflow-hidden">
+      <div className="dreams flex-1 gap-8 flex flex-col h-[85vh] overflow-hidden">
         <div className="flex flex-col gap-8">
           {dreams && dreams.length > 0 ? (
             dreams.slice(startIndex, endIndex).map((dream: Dream) => (
