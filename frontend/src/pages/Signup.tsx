@@ -10,7 +10,7 @@ const Signup = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    console.log(email, password);
+    // console.log(email, password);
 
     await signup(email, password);
   };
@@ -80,7 +80,7 @@ const Signup = () => {
           <Label htmlFor="remember">Remember me</Label>
         </div> */}
         <div className="pt-8">
-        <Button type="submit">
+        <Button type="submit" gradientDuoTone="purpleToBlue">
           <button disabled={isLoading}>Sign up</button>
         </Button>
         </div>

@@ -21,7 +21,7 @@ const App = () => {
       <div className="relative container mx-auto min-h-screen">
       <BrowserRouter>
         <Navbar />
-        <div className="pages py-6 px-4 lg:px-0">
+        <div className="pages py-6">
           <Routes>
             <Route path="/" element={user ? <Home /> : <Navigate to="/login" />} />
             <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />

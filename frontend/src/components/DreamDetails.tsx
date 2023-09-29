@@ -8,6 +8,8 @@ import ReusableModal from "../components/Modal";
 import { useState, useContext } from "react";
 import { Modal } from "flowbite-react";
 import { ThemeContext } from "../context/ThemeContext";
+import { GrRobot } from "react-icons/gr";
+import { getShortSentiment } from "../utils/shortSentiment";
 // import { Spinner } from "flowbite-react";
 
 interface DreamDetailProps {
@@ -20,9 +22,15 @@ const DreamDetails = (props: DreamDetailProps) => {
   const { user } = useAuthContext();
   const { theme } = useContext(ThemeContext);
 
+  // console.log(sentiment);
+
+  // console.log({shortSentiment});
+
   // alert(data);
 
   const [showModal, setShowModal] = useState(false);
+
+  const shortSentiment = getShortSentiment(sentiment);
 
   // console.log(props);
 
@@ -43,6 +51,16 @@ const DreamDetails = (props: DreamDetailProps) => {
     }
   };
 
+  let sentimentStatus;
+
+  if (shortSentiment === "positive") {
+    sentimentStatus = <div className="text-green-600">{sentiment}</div>;
+  } else if (shortSentiment === "negative") {
+    sentimentStatus = <div className="text-red-600">{sentiment}</div>;
+  } else {
+    sentimentStatus = <div>{sentiment}</div>;
+  }
+
   return (
     <Card className="w-full relative glassmorphism-effect dream-card overflow-hidden rounded-lg shadow-lg">
       <h5 className="text-3xl font-extrabold tracking-tighter text-theme mb-4 mt-4">
@@ -53,8 +71,16 @@ const DreamDetails = (props: DreamDetailProps) => {
       </div>
 
       <div className="text-theme mb-4 ml-4 mr-4">
-        <p className="text-xl font-semibold pb-2 pt-4">Dream sentiment:</p>
-        <span className="text-xl">{sentiment}</span>
+        <p className="text-xl font-semibold pb-2 pt-4 flex gap-2">
+          {" "}
+          <div className="icon">
+            <GrRobot size={30} />
+          </div>{" "}
+          <div>AI dream sentiment:</div>
+        </p>
+        {/* <span className="text-xl">{sentiment}</span> */}
+        {/* {sentiment === "Positive" ? <div className="text-red-600">{sentiment}</div> : <div className="text-green-700">{sentiment}</div>} */}
+        {sentimentStatus}
       </div>
 
       <div
@@ -68,7 +94,7 @@ const DreamDetails = (props: DreamDetailProps) => {
         <Button
           gradientDuoTone="purpleToBlue"
           onClick={() => setShowModal(true)}
-          className="pr-4"
+          className="mr-4 min-w-[10vw]"
         >
           Read dream details
         </Button>
@@ -77,18 +103,25 @@ const DreamDetails = (props: DreamDetailProps) => {
         </p>
       </div>
 
-      <ReusableModal showModal={showModal} onClose={() => setShowModal(false)} className={theme}>
-        <Modal.Header className="glassmorphism-effect p-4 rounded-t-lg">
+      <ReusableModal
+        showModal={showModal}
+        onClose={() => setShowModal(false)}
+        className={theme}
+      >
+        <Modal.Header className="glassmorphism-effect p-4 rounded-t-lg modal-header">
           <div className="text-theme text-2xl font-bold">{title}</div>
         </Modal.Header>
-        <Modal.Body className="glassmorphism-effect p-4">
+        <Modal.Body className="glassmorphism-effect p-4 modal-body">
           <p className="pb-8 text-lg text-theme">{description}</p>
           <div>
-            <p className="text-theme text-lg font-semibold">Dream sentiment:</p>
+            <p className="text-theme text-lg font-semibold">
+              {" "}
+              <GrRobot size={30} /> Dream sentiment:
+            </p>
             <div className="text-theme">{sentiment}</div>
           </div>
         </Modal.Body>
-        <Modal.Footer className="glassmorphism-effect p-4 rounded-b-lg">
+        <Modal.Footer className="glassmorphism-effect p-4 rounded-b-lg modal-footer">
           <Button
             gradientDuoTone="purpleToBlue"
             onClick={() => setShowModal(false)}

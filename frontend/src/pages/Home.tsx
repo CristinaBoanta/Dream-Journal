@@ -46,13 +46,13 @@ const Home = () => {
   const endIndex = startIndex + 1; // Assuming 10 dreams per page
 
   return (
-    <div className="flex lg:flex-row flex-col gap-12">
+    <div className="flex lg:flex-row flex-col gap-12 px-8">
       <div className="form flex-1 px-10 glassmorphism-effect rounded-lg p-6 shadow-md">
         <DreamForm />
 
         <div className="flex items-center justify-center">
         <div className="heatmap"><CalendarHeatmap /></div>
-        <div className="text-theme p-8">Overall score for the past 3 months:</div>
+        <div className="text-theme px-8">Overall score for the past 3 months:</div>
         </div>
       </div>
 

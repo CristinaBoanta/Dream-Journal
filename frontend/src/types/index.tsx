@@ -7,6 +7,18 @@ export interface Dream {
     createdAt: string;
     sentiment: string;
 }
+export interface FormattedDreamDate {
+    date: string;
+    count: number;
+    positive: number;
+    negative: number;
+}
+export interface AggregatedData {
+    [date: string]: {
+      positive: number;
+      negative: number;
+    };
+  }
 
 export interface PropsWithChildren {
     children: ReactNode;

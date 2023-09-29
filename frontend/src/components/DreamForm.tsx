@@ -2,11 +2,13 @@ import { useState } from "react";
 import { useDreamsContext } from "../hooks/useDreamsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { Button, Label, TextInput, Textarea, Spinner } from "flowbite-react";
+import { GiNightSleep } from 'react-icons/gi';
+// import { LuSubtitles } from "react-icons/lu";
 // import { Button } from "flowbite-react";
 
 const DreamForm = () => {
   const { dispatch } = useDreamsContext();
-  console.log(useDreamsContext());
+  // console.log(useDreamsContext());
   const { user } = useAuthContext();
 
   // console.log(dispatch);
@@ -64,7 +66,7 @@ const DreamForm = () => {
           <div className="mb-2 block">
             <Label
               htmlFor="dreamTitle"
-              className="text-theme font-normal w-[30vw] whitespace-nowrap overflow-hidden overflow-ellipsis"
+              className="text-theme text-xl font-normal w-[30vw] whitespace-nowrap overflow-hidden overflow-ellipsis"
               value="Dream Title"
             />
           </div>
@@ -72,10 +74,12 @@ const DreamForm = () => {
             id="dreamTitle"
             placeholder="Carnivore flower"
             required
+            icon={GiNightSleep}
             // type="text"
             onChange={(e) => setTitle(e.target.value)}
             value={title}
-            className={`input-effect form-element-theme shadow-md ${
+            style={{ fontSize: '1rem' }}
+            className={`input-effect form-element-theme shadow-md text-xl ${
               emptyFields.includes("title") ? "error" : ""
             }`}
           />
@@ -85,7 +89,7 @@ const DreamForm = () => {
           <div className="mb-2 block">
             <Label
               htmlFor="dreamDescription"
-              className="text-theme font-normal w-[30vw] whitespace-nowrap overflow-hidden overflow-ellipsis"
+              className="text-theme text-xl font-normal w-[30vw] whitespace-nowrap overflow-hidden overflow-ellipsis"
               value="Dream description"
             />
           </div>
@@ -94,6 +98,7 @@ const DreamForm = () => {
             placeholder="Last night I dreamed about a flesh-eating carnivore flower and it was beautiful..."
             required
             rows={6}
+            style={{ fontSize: '1rem' }}
             onChange={(e) => setDescription(e.target.value)}
             value={description}
             className={`p-2 glassmorphism-effect form-element-theme shadow-md ${
@@ -103,15 +108,15 @@ const DreamForm = () => {
         </div>
 
         {loading ? (
-          <div className="py-8">
-            <Button color="gray">
+          <div className="py-8 w-full">
+            <Button color="gray" className="min-w-[10vw]">
               <Spinner aria-label="Alternate spinner button example" />
               <span className="pl-3">Loading...</span>
             </Button>
           </div>
         ) : (
-          <div className="py-8">
-            <Button gradientDuoTone="purpleToBlue" type="submit">
+          <div className="py-8 w-full">
+            <Button gradientDuoTone="purpleToBlue" type="submit" className="min-w-[10vw]">
               Submit
             </Button>
           </div>

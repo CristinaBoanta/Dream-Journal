@@ -39,7 +39,7 @@ input.error, textarea.error {
 
 .glassmorphism-effect, .input-effect input, .pagination-effect ul li button {
     background: rgba(255,255,255,0.10) !important;
-    -webkit-backdrop-filter: blur(10px) !important;
+    /* -webkit-backdrop-filter: blur(10px) !important; */
     backdrop-filter: blur(20px) !important;
     border: 1px solid rgba(255,255,255,0.15) !important;
 }
@@ -70,6 +70,14 @@ input.error, textarea.error {
 
 .react-calendar-heatmap .color-filled {
     fill: #9333ea;
+}
+
+.negative {
+    fill: rgb(120, 11, 11);
+}
+
+.positive {
+    fill: rgb(18, 132, 18);
 }
 
 /* #light * {

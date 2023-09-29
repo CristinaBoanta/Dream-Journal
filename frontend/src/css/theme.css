@@ -16,6 +16,11 @@
     color: #fff;
 }
 
+#dark .icon svg path {
+    stroke: #fff;
+    stroke-width: 1;
+}
+
 /* Light mode */
 
 #light {
@@ -52,4 +57,12 @@
 
 #light .react-calendar-heatmap text {
     color: #000;
+}
+
+.light .text-theme {
+    color: #fff;
+}
+
+#light .react-calendar-heatmap text {
+    fill: #9333ea;
 }
