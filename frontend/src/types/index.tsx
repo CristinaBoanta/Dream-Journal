@@ -17,6 +17,7 @@ export interface AggregatedData {
     [date: string]: {
       positive: number;
       negative: number;
+      neutral: number;
     };
   }
 

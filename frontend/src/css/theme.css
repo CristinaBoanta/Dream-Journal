@@ -21,6 +21,11 @@
     stroke-width: 1;
 }
 
+.dark .icon svg path {
+    stroke: white;
+    stroke-width: 1;
+}
+
 /* Light mode */
 
 #light {
@@ -61,6 +66,11 @@
 
 .light .text-theme {
     color: #fff;
+}
+
+.light .icon svg path {
+    stroke: white;
+    stroke-width: 1;
 }
 
 #light .react-calendar-heatmap text {

@@ -72,7 +72,7 @@ const DreamForm = () => {
           </div>
           <TextInput
             id="dreamTitle"
-            placeholder="Carnivore flower"
+            placeholder="Dream title"
             required
             icon={GiNightSleep}
             // type="text"
@@ -95,7 +95,7 @@ const DreamForm = () => {
           </div>
           <Textarea
             id="dreamDescription"
-            placeholder="Last night I dreamed about a flesh-eating carnivore flower and it was beautiful..."
+            placeholder="Describe your dream..."
             required
             rows={6}
             style={{ fontSize: '1rem' }}

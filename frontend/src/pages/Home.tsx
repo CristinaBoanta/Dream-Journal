@@ -6,7 +6,7 @@ import { useDreamsContext } from "../hooks/useDreamsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { Pagination } from 'flowbite-react';
 import CalendarHeatmap from "../components/Heatmap";
-
+import { BiRectangle } from "react-icons/bi";
 
 const Home = () => {
   const { dreams, dispatch } = useDreamsContext();
@@ -51,8 +51,16 @@ const Home = () => {
         <DreamForm />
 
         <div className="flex items-center justify-center">
-        <div className="heatmap"><CalendarHeatmap /></div>
-        <div className="text-theme px-8">Overall score for the past 3 months:</div>
+        <div className="heatmap"><CalendarHeatmap />
+        <div className="text-theme">
+          <div className="flex gap-4">
+            <div className="square-positive flex items-center"><BiRectangle /> <span className="square-text">Positive</span></div>
+            <div className="square-negative flex items-center"><BiRectangle /> <span className="square-text">Negative</span></div>
+            <div className="square-neutral flex items-center"><BiRectangle /><span className="square-text">Neutral</span></div>
+          </div>
+        </div>
+        </div>
+        {/* <div className="text-theme px-8">Overall score for the past 3 months:</div> */}
         </div>
       </div>
 

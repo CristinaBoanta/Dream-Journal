@@ -114,10 +114,12 @@ const DreamDetails = (props: DreamDetailProps) => {
         <Modal.Body className="glassmorphism-effect p-4 modal-body">
           <p className="pb-8 text-lg text-theme">{description}</p>
           <div>
-            <p className="text-theme text-lg font-semibold">
-              {" "}
-              <GrRobot size={30} /> Dream sentiment:
-            </p>
+          <p className="text-xl font-semibold pb-2 pt-4 flex gap-2 text-theme">
+          <div className="icon text-theme">
+            <GrRobot size={30} />
+          </div>
+          <div>AI dream sentiment:</div>
+        </p>
             <div className="text-theme">{sentiment}</div>
           </div>
         </Modal.Body>

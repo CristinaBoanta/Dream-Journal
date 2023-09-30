@@ -69,15 +69,44 @@ input.error, textarea.error {
 }
 
 .react-calendar-heatmap .color-filled {
-    fill: #9333ea;
+    fill: #9333ea !important;
 }
 
 .negative {
-    fill: rgb(120, 11, 11);
+    fill: rgb(194, 22, 22) !important;
 }
 
 .positive {
-    fill: rgb(18, 132, 18);
+    fill: rgb(24, 172, 24) !important;
+}
+
+.neutral {
+    fill: rgb(243, 150, 79) !important;
+}
+
+.react-calendar-heatmap rect {
+    fill: rgb(255, 255, 255);
+}
+
+.square-positive svg, .square-negative svg, .square-neutral svg {
+    stroke-width: 0;
+    color: transparent;
+}
+
+.square-positive svg {
+    background-color: rgb(24, 172, 24);
+}
+
+.square-negative svg {
+    background-color: rgb(194, 22, 22);
+}
+
+.square-neutral svg {
+    background-color: rgb(243, 150, 79);
+}
+
+.square-text {
+    padding-left: 1rem;
 }
 
 /* #light * {
