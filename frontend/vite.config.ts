@@ -4,9 +4,14 @@ import checker from 'vite-plugin-checker';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(),
+  plugins: [
+    react(),
     checker({
-    // e.g. use TypeScript check
-    typescript: true,
-  }),],
-})
+      // e.g. use TypeScript check
+      typescript: true,
+    })
+  ],
+  server: {
+    host: true
+  }
+});
