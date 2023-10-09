@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "npm install && cd frontend && npm install && npm run build && cd ../backend && npm install",
-    "start": "concurrently \"cd frontend && npm run preview\" \"cd backend && npm start\""
+    "start": "concurrently \"cd frontend && npm run preview\" \"cd backend && npm run start\""
   },
   "author": "",
   "license": "ISC",
